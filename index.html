@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHV | CYBER DOWNLOADER</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #00FF41;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .terminal {
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #00FF41;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        h1 { font-size: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 5px; }
+        .input-group { margin-top: 20px; display: flex; flex-direction: column; }
+        input {
+            background: transparent;
+            border: 1px solid #00FF41;
+            color: #00FF41;
+            padding: 10px;
+            outline: none;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #00FF41;
+            color: #000;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover { background: #008F11; color: #fff; }
+        #status { margin-top: 15px; font-size: 0.9rem; min-height: 20px; }
+        .cursor { display: inline-block; width: 10px; height: 15px; background: #00FF41; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="terminal">
+    <h1>[ SHV-CORE v2.0 ]</h1>
+    <p>> system_status: <span style="color: white;">ONLINE</span></p>
+    <p>> bypass_firewall: <span style="color: white;">SUCCESS</span></p>
+    <hr style="border: 0.5px solid #00FF41;">
+    
+    <div class="input-group">
+        <label>> ENTER_VIDEO_URL_HERE:</label>
+        <input type="text" id="videoUrl" placeholder="https://www.instagram.com/reel/..." autocomplete="off">
+        <button onclick="startDownload()">EXECUTE_DOWNLOAD</button>
+    </div>
+
+    <div id="status">root@shiva:~# <span id="log">waiting for command...</span><span class="cursor"></span></div>
+</div>
+
+<script>
+    function startDownload() {
+        const url = document.getElementById('videoUrl').value;
+        const log = document.getElementById('log');
+        
+        if (!url) {
+            log.innerText = "ERROR: URL_NOT_FOUND";
+            return;
+        }
+
+        log.innerText = "INJECTING_SCRAPER...";
+        
+        // Note: Frontend se direct download ke liye hum ek API ka use karte hain 
+        // Kyunki yt-dlp sirf server par chalta hai.
+        setTimeout(() => {
+            log.innerText = "BYPASSING_RESTRICTIONS...";
+            setTimeout(() => {
+                log.innerText = "REDIRECTING_TO_SERVER...";
+                // Example redirection to a free downloading service
+                window.location.href = "https://savefrom.net/?url=" + url;
+            }, 1000);
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
